@@ -33,7 +33,10 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
-          <a-asset-item id="avatarModel" src="./book.glb"></a-asset-item>
+          <a-asset-item
+            id="avatarModel"
+            src="./solar-system.glb"
+          ></a-asset-item>
         </a-assets>
 
         <a-camera
@@ -51,9 +54,9 @@
         >
           <a-gltf-model
             play-all-model-animations
-            rotation="0 90 0"
-            position="0 0.2 0"
-            scale="0.42 0.42 0.42"
+            rotation="0 0 0"
+            position="0 0 0"
+            scale="0.25 0.25 0.25"
             src="#avatarModel"
           ></a-gltf-model>
         </a-entity>
