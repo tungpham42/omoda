@@ -13,21 +13,7 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            const testVideo = document.createElement("video");
-            const canplayWebm = testVideo.canPlayType(
-              'video/webm; codecs="vp8, vp9, vorbis"'
-            );
-            if (canplayWebm == "") {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-mp4");
-              document.querySelector("#shockwave-video-mp4").play();
-            } else {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-webm");
-              document.querySelector("#shockwave-video-webm").play();
-            }
+            document.querySelector("#shockwave-mp4").play();
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -50,16 +36,11 @@
       >
         <a-assets>
           <video
-            id="shockwave-video-mp4"
+            id="shockwave-mp4"
             autoplay="false"
             loop="true"
-            src="./omoda.mp4"
-          ></video>
-          <video
-            id="shockwave-video-webm"
-            autoplay="false"
-            loop="true"
-            src="./omoda.webm"
+            muted="true"
+            src="./shockwave.mp4"
           ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
@@ -79,12 +60,12 @@
         >
           <a-video
             id="shockwave-video"
-            src="#shockwave-video-mp4"
+            src="#shockwave-mp4"
             webkit-playsinline
             playsinline
             width="1"
             height="0.552"
-            position="0 -0.5 0"
+            position="0 0 0"
           >
           </a-video>
           <a-gltf-model
