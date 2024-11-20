@@ -13,21 +13,22 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            const testVideo = document.createElement("video");
-            const canplayWebm = testVideo.canPlayType(
-              'video/webm; codecs="vp8, vorbis"'
-            );
-            if (canplayWebm == "") {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-mp4");
-              document.querySelector("#shockwave-video-mp4").play();
-            } else {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-webm");
-              document.querySelector("#shockwave-video-webm").play();
-            }
+            // const testVideo = document.createElement("video");
+            // const canplayWebm = testVideo.canPlayType(
+            //   'video/webm; codecs="vp8, vorbis"'
+            // );
+            // if (canplayWebm == "") {
+            //   document
+            //     .querySelector("#shockwave-video")
+            //     .setAttribute("src", "#shockwave-video-mp4");
+            //   document.querySelector("#shockwave-video-mp4").play();
+            // } else {
+            //   document
+            //     .querySelector("#shockwave-video")
+            //     .setAttribute("src", "#shockwave-video-webm");
+            //   document.querySelector("#shockwave-video-webm").play();
+            // }
+            document.querySelector("#shockwave-video-mov").play();
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -49,6 +50,12 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
+          <video
+            id="shockwave-video-mov"
+            autoplay="false"
+            loop="true"
+            src="./omoda.mov"
+          ></video>
           <video
             id="shockwave-video-mp4"
             autoplay="false"
@@ -79,7 +86,7 @@
         >
           <a-video
             id="shockwave-video"
-            src="#shockwave-video-mp4"
+            src="#shockwave-video-mov"
             webkit-playsinline
             playsinline
             width="1"
