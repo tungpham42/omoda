@@ -13,20 +13,8 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            const testVideo = document.createElement("video");
-            const canplayWebm = testVideo.canPlayType("video/webm");
-            const canplayMp4 = testVideo.canPlayType("video/mp4");
-            if (canplayMp4 || !canplayWebm) {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-mp4");
-              document.querySelector("#shockwave-video-mp4").play();
-            } else if (canplayWebm || !canplayMp4) {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-webm");
-              document.querySelector("#shockwave-video-webm").play();
-            }
+            // document.querySelector("#shockwave-video-mp4").play();
+            // document.querySelector("#shockwave-video-webm").play();
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -78,7 +66,7 @@
         >
           <a-video
             id="shockwave-video"
-            src=""
+            src="#shockwave-video-mp4"
             webkit-playsinline
             playsinline
             width="1"
