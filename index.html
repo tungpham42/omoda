@@ -49,12 +49,18 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
-          <video id="videoId" muted loop playsinline webkit-playsinline>
-            <!-- HEVC video for safari support -->
-            <source src="./omoda.mov" type="video/mp4;codecs=hvc1" />
-            <!-- WEBM video for chrome and firefox -->
-            <source src="./omoda.webm" type="video/webm" />
-          </video>
+          <video
+            id="shockwave-video-mp4"
+            autoplay="false"
+            loop="true"
+            src="./omoda.mp4"
+          ></video>
+          <video
+            id="shockwave-video-webm"
+            autoplay="false"
+            loop="true"
+            src="./omoda.webm"
+          ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
 
@@ -71,17 +77,9 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <a-entity
-            material="shader: transparent-video; src: #videoId"
-            geometry="primitive: plane;
-                  width: 1;
-                  height: 0.552"
-            position="0 -0.5 0"
-          >
-          </a-entity>
-          <!-- <a-video
+          <a-video
             id="shockwave-video"
-            src="#shockwave-video-mp4"
+            src="#shockwave-video-webm"
             webkit-playsinline
             playsinline
             width="1"
@@ -89,7 +87,7 @@
             position="0 -0.5 0"
             transparent="true"
           >
-          </a-video> -->
+          </a-video>
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
