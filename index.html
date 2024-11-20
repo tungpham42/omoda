@@ -22,15 +22,13 @@
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-mp4");
               document.querySelector("#shockwave-video-mp4").play();
-              alert("mp4");
-              document.querySelector("#shockwave-video-mov").play();
+              console.log("mp4");
             } else {
               document
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-webm");
               document.querySelector("#shockwave-video-webm").play();
-              alert("webm");
-              document.querySelector("#shockwave-video-mov").play();
+              console.log("webm");
             }
           });
           this.el.addEventListener("targetLost", (event) => {
@@ -89,7 +87,7 @@
         >
           <a-video
             id="shockwave-video"
-            src="#shockwave-video-mov"
+            src="#shockwave-video-mp4"
             webkit-playsinline
             playsinline
             width="1"
