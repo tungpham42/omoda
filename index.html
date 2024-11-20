@@ -36,11 +36,14 @@
         <a-assets>
           <video
             id="shockwave"
-            autoplay
-            playsinline
-            webkit-playsinline
-            loop="true"
+            preload="auto"
             src="./Comp 1_4.mov"
+            width="160"
+            height="90"
+            autoplay
+            loop="true"
+            crossorigin="anonymous"
+            muted
           ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
@@ -58,7 +61,14 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <a-video src="#shockwave" position="0 -0.7 0"></a-video>
+          <a-entity
+            material="shader: flat; src: #shockwave"
+            geometry="primitive: plane; width: 160; height: 90;"
+            position="0 -0.7 0"
+            rotation="0 0 0"
+            visible="false"
+          >
+          </a-entity>
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
