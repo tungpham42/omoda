@@ -15,12 +15,13 @@
             console.log("target found");
             const testVideo = document.createElement("video");
             const canplayWebm = testVideo.canPlayType("video/webm");
-            if (canplayWebm == "") {
+            const canplayMp4 = testVideo.canPlayType("video/mp4");
+            if (canplayMp4 && !canplayWebm) {
               document
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-mp4");
               document.querySelector("#shockwave-video-mp4").play();
-            } else {
+            } else if (canplayWebm && !canplayMp4) {
               document
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-webm");
@@ -96,22 +97,5 @@
         <a-entity environment="preset: default"></a-entity>
       </a-scene>
     </div>
-    <script>
-      window.onload = function () {
-        const testVideo = document.createElement("video");
-        const canplayWebm = testVideo.canPlayType("video/webm");
-        if (canplayWebm == "") {
-          document
-            .querySelector("#shockwave-video")
-            .setAttribute("src", "#shockwave-video-mp4");
-          document.querySelector("#shockwave-video-mp4").play();
-        } else {
-          document
-            .querySelector("#shockwave-video")
-            .setAttribute("src", "#shockwave-video-webm");
-          document.querySelector("#shockwave-video-webm").play();
-        }
-      };
-    </script>
   </body>
 </html>
