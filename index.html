@@ -9,6 +9,21 @@
     <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
     <script src="play-all-model-animations.js"></script>
     <script>
+      AFRAME.registerShader("green-screen", {
+        schema: {
+          color: { type: "color", default: "#00FF00" }, // Green color to remove
+        },
+        fragmentShader: `
+          uniform vec3 color;
+          void main() {
+            vec4 texColor = texture2D(texture, uv);
+            if (distance(texColor.rgb, color) < 0.3) {
+              discard;  // Remove the green background
+            }
+            gl_FragColor = texColor;
+          }
+        `,
+      });
       AFRAME.registerComponent("omodatarget", {
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
@@ -50,6 +65,14 @@
       >
         <a-assets>
           <video
+            id="green-screen-video"
+            autoplay="false"
+            loop="true"
+            playsinline
+          >
+            <source src="./green.mp4" type="video/mp4" />
+          </video>
+          <video
             id="shockwave-video-mp4"
             autoplay="false"
             loop="true"
@@ -77,7 +100,14 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <a-video
+          <a-plane
+            position="0 0 0"
+            width="1"
+            height="0.552"
+            material="src: #green-screen-video; shader: green-screen; color: #00FF00;"
+          >
+          </a-plane>
+          <!-- <a-video
             id="shockwave-video"
             src="#shockwave-video-webm"
             webkit-playsinline
@@ -87,7 +117,7 @@
             position="0 -0.5 0"
             transparent="true"
           >
-          </a-video>
+          </a-video> -->
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
