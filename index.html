@@ -28,21 +28,23 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            const testVideo = document.createElement("video");
-            const canplayWebm = testVideo.canPlayType(
-              'video/webm; codecs="vp8, vorbis"'
-            );
-            if (canplayWebm == "") {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-mp4");
-              document.querySelector("#shockwave-video-mp4").play();
-            } else {
-              document
-                .querySelector("#shockwave-video")
-                .setAttribute("src", "#shockwave-video-webm");
-              document.querySelector("#shockwave-video-webm").play();
-            }
+            document.querySelector("#green-screen-video").play();
+
+            // const testVideo = document.createElement("video");
+            // const canplayWebm = testVideo.canPlayType(
+            //   'video/webm; codecs="vp8, vorbis"'
+            // );
+            // if (canplayWebm == "") {
+            //   document
+            //     .querySelector("#shockwave-video")
+            //     .setAttribute("src", "#shockwave-video-mp4");
+            //   document.querySelector("#shockwave-video-mp4").play();
+            // } else {
+            //   document
+            //     .querySelector("#shockwave-video")
+            //     .setAttribute("src", "#shockwave-video-webm");
+            //   document.querySelector("#shockwave-video-webm").play();
+            // }
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -68,7 +70,6 @@
             id="green-screen-video"
             autoplay="false"
             loop="true"
-            playsinline
             src="./green.mp4"
           ></video>
           <video
