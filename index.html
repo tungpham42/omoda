@@ -22,12 +22,14 @@
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-mp4");
               document.querySelector("#shockwave-video-mp4").play();
+              alert("mp4");
               document.querySelector("#shockwave-video-mov").play();
             } else {
               document
                 .querySelector("#shockwave-video")
                 .setAttribute("src", "#shockwave-video-webm");
               document.querySelector("#shockwave-video-webm").play();
+              alert("webm");
               document.querySelector("#shockwave-video-mov").play();
             }
           });
