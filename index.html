@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/aframe-extras@7.5.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
     <script src="play-all-model-animations.js"></script>
+    <script src="aframe-chromakey-material.min.js"></script>
     <script>
       AFRAME.registerComponent("omodatarget", {
         init: function () {
@@ -24,6 +25,14 @@
     </script>
   </head>
   <body>
+    <video
+      style="opacity: 0"
+      id="greenscreenvideo"
+      src="./green.mp4"
+      loop
+      autoplay
+      muted
+    ></video>
     <!-- <button id="fullscreen-button">Fullscreen</button> -->
     <div class="omoda-container" id="omodaContainer">
       <a-scene
