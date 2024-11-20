@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/aframe-extras@7.5.1/dist/aframe-extras.min.js"></script>
     <script src="play-all-model-animations.js"></script>
     <script>
+      document.querySelector("#shockwave-mp4").play();
       AFRAME.registerComponent("omodatarget", {
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
@@ -35,12 +36,11 @@
       >
         <a-assets>
           <video
-            id="shockwave"
-            autoplay
-            loop
-            muted
+            id="shockwave-mp4"
+            autoplay="false"
             loop="true"
-            src="shockwave.mp4"
+            muted="true"
+            src="./shockwave.mp4"
           ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
@@ -59,10 +59,13 @@
           mindar-image-target="targetIndex: 0"
         >
           <a-video
-            src="#shockwave"
+            id="shockwave"
+            src="#shockwave-mp4"
+            webkit-playsinline
+            playsinline
+            width="1"
+            height="0.552"
             position="0 -0.5 0"
-            width="0.4"
-            height="0.225"
           ></a-video>
           <a-gltf-model
             play-all-model-animations
@@ -75,5 +78,8 @@
         <a-entity environment="preset: default"></a-entity>
       </a-scene>
     </div>
+    <script>
+      window.onload = function () {};
+    </script>
   </body>
 </html>
