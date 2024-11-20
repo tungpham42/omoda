@@ -13,7 +13,21 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            document.querySelector("#shockwave-mov").play();
+            const testVideo = document.createElement("video");
+            const canplayWebm = testVideo.canPlayType(
+              'video/webm; codecs="vp8, vorbis"'
+            );
+            if (canplayWebm == "") {
+              document
+                .querySelector("#shockwave-video")
+                .setAttribute("src", "#shockwave-video-mp4");
+              document.querySelector("#shockwave-video-mp4").play();
+            } else {
+              document
+                .querySelector("#shockwave-video")
+                .setAttribute("src", "#shockwave-video-webm");
+              document.querySelector("#shockwave-video-webm").play();
+            }
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -36,11 +50,16 @@
       >
         <a-assets>
           <video
-            id="shockwave-mov"
+            id="shockwave-video-mp4"
             autoplay="false"
             loop="true"
-            muted="true"
-            src="./Comp 1_4.mov"
+            src="./omoda.mp4"
+          ></video>
+          <video
+            id="shockwave-video-webm"
+            autoplay="false"
+            loop="true"
+            src="./omoda.webm"
           ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
@@ -58,26 +77,17 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <!-- <a-video
-            id="shockwave"
-            src="#shockwave-mov"
+          <a-video
+            id="shockwave-video"
+            src="#shockwave-video-webm"
             webkit-playsinline
             playsinline
             width="1"
             height="0.552"
             position="0 -0.5 0"
-            material="transparent: true;"
+            transparent="true"
           >
-          </a-video> -->
-          <a-entity
-            material="shader: transparent-video; src: #shockwave-mov"
-            geometry="primitive: plane;
-                  width: 1;
-                  height: 0.552"
-            position="0 -0.5 0"
-            rotation="20 0 0"
-          >
-          </a-entity>
+          </a-video>
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
