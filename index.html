@@ -9,42 +9,25 @@
     <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
     <script src="play-all-model-animations.js"></script>
     <script>
-      AFRAME.registerShader("green-screen", {
-        schema: {
-          color: { type: "color", default: "#00FF00" }, // Green color to remove
-        },
-        fragmentShader: `
-          uniform vec3 color;
-          void main() {
-            vec4 texColor = texture2D(texture, uv);
-            if (distance(texColor.rgb, color) < 0.3) {
-              discard;  // Remove the green background
-            }
-            gl_FragColor = texColor;
-          }
-        `,
-      });
       AFRAME.registerComponent("omodatarget", {
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            document.querySelector("#green-screen-video").play();
-
-            // const testVideo = document.createElement("video");
-            // const canplayWebm = testVideo.canPlayType(
-            //   'video/webm; codecs="vp8, vorbis"'
-            // );
-            // if (canplayWebm == "") {
-            //   document
-            //     .querySelector("#shockwave-video")
-            //     .setAttribute("src", "#shockwave-video-mp4");
-            //   document.querySelector("#shockwave-video-mp4").play();
-            // } else {
-            //   document
-            //     .querySelector("#shockwave-video")
-            //     .setAttribute("src", "#shockwave-video-webm");
-            //   document.querySelector("#shockwave-video-webm").play();
-            // }
+            const testVideo = document.createElement("video");
+            const canplayWebm = testVideo.canPlayType(
+              'video/webm; codecs="vp8, vorbis"'
+            );
+            if (canplayWebm == "") {
+              document
+                .querySelector("#shockwave-video")
+                .setAttribute("src", "#shockwave-video-mp4");
+              document.querySelector("#shockwave-video-mp4").play();
+            } else {
+              document
+                .querySelector("#shockwave-video")
+                .setAttribute("src", "#shockwave-video-webm");
+              document.querySelector("#shockwave-video-webm").play();
+            }
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -66,12 +49,6 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
-          <video
-            id="green-screen-video"
-            autoplay="false"
-            loop="true"
-            src="./green.mp4"
-          ></video>
           <video
             id="shockwave-video-mp4"
             autoplay="false"
@@ -100,26 +77,7 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <a-plane
-            position="0 -0.5 0"
-            width="1"
-            height="0.552"
-            material="src: #green-screen-video; shader: green-screen; color: #00FF00;"
-          >
-          </a-plane>
           <a-video
-            id="shockwave-video"
-            src="#green-screen-video"
-            material="shader: green-screen; color: #00FF00;"
-            webkit-playsinline
-            playsinline
-            width="1"
-            height="0.552"
-            position="0 -0.5 0"
-            transparent="true"
-          >
-          </a-video>
-          <!-- <a-video
             id="shockwave-video"
             src="#shockwave-video-webm"
             webkit-playsinline
@@ -129,7 +87,7 @@
             position="0 -0.5 0"
             transparent="true"
           >
-          </a-video> -->
+          </a-video>
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
