@@ -12,7 +12,10 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            document.querySelector("#shockwave-mp4").play();
+            const video = document.querySelector("#shockwave-mp4");
+            const videoPlane = document.querySelector("#shockwave-plane");
+            video.play();
+            videoPlane.setAttribute("material", "src", "#shockwave-mp4");
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -57,7 +60,7 @@
           omodatarget
           mindar-image-target="targetIndex: 0"
         >
-          <a-video
+          <!-- <a-video
             id="shockwave"
             src="#shockwave-mp4"
             webkit-playsinline
@@ -66,7 +69,15 @@
             height="0.552"
             position="0 -0.5 0"
             transparent="true"
-          ></a-video>
+          ></a-video> -->
+          <a-plane
+            id="shockwave-plane"
+            position="0 -0.5 0"
+            rotation="20 0 0"
+            width="1"
+            height="0.552"
+            color="#000"
+          ></a-plane>
           <a-gltf-model
             play-all-model-animations
             rotation="20 0 0"
