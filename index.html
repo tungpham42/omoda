@@ -14,9 +14,7 @@
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
             const testVideo = document.createElement("video");
-            const canplayWebm = testVideo.canPlayType(
-              'video/webm; codecs="vp8, vorbis"'
-            );
+            const canplayWebm = testVideo.canPlayType("video/webm");
             if (canplayWebm == "") {
               document
                 .querySelector("#shockwave-video")
@@ -99,7 +97,21 @@
       </a-scene>
     </div>
     <script>
-      window.onload = function () {};
+      window.onload = function () {
+        const testVideo = document.createElement("video");
+        const canplayWebm = testVideo.canPlayType("video/webm");
+        if (canplayWebm == "") {
+          document
+            .querySelector("#shockwave-video")
+            .setAttribute("src", "#shockwave-video-mp4");
+          document.querySelector("#shockwave-video-mp4").play();
+        } else {
+          document
+            .querySelector("#shockwave-video")
+            .setAttribute("src", "#shockwave-video-webm");
+          document.querySelector("#shockwave-video-webm").play();
+        }
+      };
     </script>
   </body>
 </html>
