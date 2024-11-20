@@ -15,8 +15,8 @@
               document
                 .querySelector("#omodaModel")
                 .setAttribute("visible", true);
+              document.querySelector("#greenscreenvideo").play();
             }, 1000);
-            document.querySelector("#greenscreenvideo").play();
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
