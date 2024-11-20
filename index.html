@@ -13,7 +13,7 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            document.querySelector("#shockwave-webm").play();
+            document.querySelector("#shockwave-mov").play();
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
@@ -36,11 +36,11 @@
       >
         <a-assets>
           <video
-            id="shockwave-webm"
+            id="shockwave-mov"
             autoplay="false"
             loop="true"
             muted="true"
-            src="./omoda.webm"
+            src="./Comp 1_4.mov"
           ></video>
           <a-asset-item id="avatarModel" src="./omoda.glb"></a-asset-item>
         </a-assets>
@@ -60,7 +60,7 @@
         >
           <!-- <a-video
             id="shockwave"
-            src="#shockwave-webm"
+            src="#shockwave-mov"
             webkit-playsinline
             playsinline
             width="1"
@@ -70,7 +70,7 @@
           >
           </a-video> -->
           <a-entity
-            material="shader: transparent-video; src: #shockwave-webm"
+            material="shader: transparent-video; src: #shockwave-mov"
             geometry="primitive: plane;
                   width: 1;
                   height: 0.552"
