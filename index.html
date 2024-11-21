@@ -31,9 +31,7 @@
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
-            document
-              .querySelector("#camera-notification")
-              .setAttribute("visible", true);
+            document.querySelector("#camera-permission").classList.add("show");
           });
           //this.el.emit('targetFound');
         },
