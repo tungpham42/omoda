@@ -11,14 +11,6 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            setTimeout(() => {
-              document
-                .querySelector("#omodaModel")
-                .setAttribute("visible", true);
-              document
-                .querySelector("#omodaPlane")
-                .setAttribute("visible", true);
-            }, 3000);
             document.querySelector("#greenscreenvideo").play();
           });
           this.el.addEventListener("targetLost", (event) => {
@@ -72,7 +64,7 @@
             position="0 -0.025 0"
             rotation="-70 0 0"
             material="shader: chromakey; src: #greenscreenvideo; color: 0.1 0.9 0.2"
-            visible="false"
+            visible="true"
           ></a-plane>
           <a-gltf-model
             id="omodaModel"
@@ -81,7 +73,7 @@
             position="0 0 0"
             scale="0.15 0.15 0.15"
             src="#avatarModel"
-            visible="false"
+            visible="true"
           ></a-gltf-model>
         </a-entity>
         <a-entity environment="preset: default"></a-entity>
