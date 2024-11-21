@@ -25,6 +25,9 @@
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
             document.querySelector("#greenscreenvideo").play();
+            document
+              .querySelector("#camera-permission")
+              .classList.remove("show");
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
