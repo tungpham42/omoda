@@ -6,13 +6,27 @@
     <script src="play-all-model-animations.js"></script>
     <script src="aframe-chromakey-material.min.js"></script>
     <script>
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          console.log("Camera access granted.");
+          // Perform actions when the camera is permitted
+          // e.g., displaying the video stream
+          document
+            .querySelector("#camera-notification")
+            .setAttribute("visible", true);
+        })
+        .catch((error) => {
+          console.error("Camera access denied:", error);
+          // Handle the case when the user denies access
+          document
+            .querySelector("#camera-notification")
+            .setAttribute("visible", false);
+        });
       AFRAME.registerComponent("omodatarget", {
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            document
-              .querySelector("#camera-notification")
-              .setAttribute("visible", false);
             document.querySelector("#greenscreenvideo").play();
           });
           this.el.addEventListener("targetLost", (event) => {
