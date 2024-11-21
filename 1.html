@@ -7,19 +7,6 @@
     <script src="play-all-model-animations.js"></script>
     <script src="aframe-chromakey-material.min.js"></script>
     <script>
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          console.log("Camera access granted.");
-          // Perform actions when the camera is permitted
-          // e.g., displaying the video stream
-          document.querySelector("#camera-permission").classList.add("show");
-        })
-        .catch((error) => {
-          console.error("Camera access denied:", error);
-          // Handle the case when the user denies access
-          document.querySelector("#camera-permission").classList.remove("show");
-        });
       AFRAME.registerComponent("omodatarget", {
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
@@ -48,7 +35,7 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
       #camera-permission {
-        background-color: rgba(0, 193, 233, 0.8); /* Semi-transparent green */
+        background-color: rgba(0, 193, 233, 0.8);
         color: #fff;
         padding: 20px 40px;
         border-radius: 8px;
@@ -63,9 +50,10 @@
       }
     </style>
   </head>
-
   <body>
-    <p id="camera-permission">Vui lòng di chuyển thiệp vào camera</p>
+    <p id="camera-permission" class="show">
+      Vui lòng di chuyển thiệp vào camera
+    </p>
     <div class="omoda-container" id="omodaContainer">
       <a-scene
         id="mindar-scene"
