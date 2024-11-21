@@ -24,8 +24,11 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
+            document.querySelector("#greenscreenvideo").play();
             setTimeout(function () {
-              document.querySelector("#greenscreenvideo").play();
+              document
+                .querySelector("#omodaPlane")
+                .setAttribute("visible", true);
             }, 500);
             document
               .querySelector("#camera-permission")
@@ -104,7 +107,7 @@
             position="0 -0.025 0"
             rotation="-70 0 0"
             material="shader: chromakey; src: #greenscreenvideo;"
-            visible="true"
+            visible="false"
           ></a-plane>
           <a-gltf-model
             id="omodaModel"
