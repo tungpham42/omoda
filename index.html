@@ -19,14 +19,11 @@
             }, 500);
             document
               .querySelector("#camera-permission")
-              .classList.remove("hide");
-            document.querySelector("#camera-permission").classList.add("hide");
+              .classList.remove("show");
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
-            document
-              .querySelector("#camera-permission")
-              .classList.remove("hide");
+            document.querySelector("#camera-permission").classList.add("show");
           });
           //this.el.emit('targetFound');
         },
@@ -38,7 +35,7 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
       #camera-permission {
-        background-color: rgba(0, 193, 233, 0.8); /* Semi-transparent green */
+        background-color: rgba(0, 193, 233, 0.8);
         color: #fff;
         padding: 20px 40px;
         border-radius: 8px;
@@ -46,20 +43,21 @@
         font-weight: 700;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        display: block;
+        display: none;
       }
-      #camera-permission.hide {
-        display: none !important;
+      #camera-permission.show {
+        display: block !important;
       }
     </style>
   </head>
-
   <body>
-    <p id="camera-permission">Vui lòng di chuyển thiệp vào camera</p>
+    <p id="camera-permission" class="show">
+      Vui lòng di chuyển thiệp vào camera
+    </p>
     <div class="omoda-container" id="omodaContainer">
       <a-scene
         id="mindar-scene"
-        mindar-image="imageTargetSrc: ./omoda.mind; filterMinCF: 0.0001; filterBeta: 0.0001; warmupTolerance: 1; missTolerance: 30; maxTrack: 50; hideStats: false;"
+        mindar-image="imageTargetSrc: ./omoda.mind; filterMinCF: 0.0001; filterBeta: 0.0001; warmupTolerance: 1; missTolerance: 30; maxTrack: 50; showStats: false;"
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
