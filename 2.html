@@ -24,9 +24,7 @@
         init: function () {
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
-            setTimeout(function () {
-              document.querySelector("#greenscreenvideo").play();
-            }, 500);
+            document.querySelector("#greenscreenvideo").play();
             document
               .querySelector("#camera-permission")
               .classList.remove("show");
@@ -104,6 +102,16 @@
             position="0 -0.025 0"
             rotation="-70 0 0"
             material="shader: chromakey; src: #greenscreenvideo;"
+            visible="true"
+          ></a-plane>
+          <a-plane
+            id="backgroundPlane"
+            width="1"
+            height="1.4"
+            position="0 -0.02 0"
+            rotation="-70 0 0"
+            color="#00c1e9"
+            opacity="0.3"
             visible="true"
           ></a-plane>
           <a-gltf-model
