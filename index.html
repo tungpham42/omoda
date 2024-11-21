@@ -19,11 +19,14 @@
             }, 500);
             document
               .querySelector("#camera-permission")
-              .classList.remove("show");
+              .classList.remove("hide");
+            document.querySelector("#camera-permission").classList.add("hide");
           });
           this.el.addEventListener("targetLost", (event) => {
             console.log("target found");
-            document.querySelector("#camera-permission").classList.add("show");
+            document
+              .querySelector("#camera-permission")
+              .classList.remove("hide");
           });
           //this.el.emit('targetFound');
         },
@@ -43,10 +46,10 @@
         font-weight: 700;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        display: none;
+        display: block;
       }
-      #camera-permission.show {
-        display: block !important;
+      #camera-permission.hide {
+        display: none !important;
       }
     </style>
   </head>
@@ -56,7 +59,7 @@
     <div class="omoda-container" id="omodaContainer">
       <a-scene
         id="mindar-scene"
-        mindar-image="imageTargetSrc: ./omoda.mind; filterMinCF: 0.0001; filterBeta: 0.0001; warmupTolerance: 1; missTolerance: 30; maxTrack: 50; showStats: false;"
+        mindar-image="imageTargetSrc: ./omoda.mind; filterMinCF: 0.0001; filterBeta: 0.0001; warmupTolerance: 1; missTolerance: 30; maxTrack: 50; hideStats: false;"
         color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
