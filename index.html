@@ -61,14 +61,6 @@
 
   <body>
     <p id="camera-permission">Vui lòng di chuyển thiệp vào camera</p>
-    <video
-      style="opacity: 0"
-      id="greenscreenvideo"
-      src="./green.mp4"
-      loop
-      muted
-      playsinline
-    ></video>
     <div class="omoda-container" id="omodaContainer">
       <a-scene
         id="mindar-scene"
@@ -79,6 +71,14 @@
         device-orientation-permission-ui="enabled: false"
       >
         <a-assets>
+          <video
+            style="opacity: 0"
+            id="greenscreenvideo"
+            src="./green.mp4"
+            loop
+            muted
+            playsinline
+          ></video>
           <a-asset-item id="avatarModel" src="./omoda_v2.glb"></a-asset-item>
         </a-assets>
 
